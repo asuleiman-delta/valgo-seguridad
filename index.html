@@ -31,7 +31,7 @@
   .reveal.is-visible { opacity:1; transform:none; }
   @media (prefers-reduced-motion: reduce){ .reveal { opacity:1 !important; transform:none !important; transition:none !important; } }
   @media (max-width:980px){
-    .vh-wrap { min-height:auto !important; height:auto !important; padding:152px 20px 44px !important; display:block !important; }
+    .vh-wrap { min-height:auto !important; height:auto !important; padding:440px 20px 44px !important; display:block !important; }
     .hero-topbar > div { justify-content:center !important; padding:24px 20px 0 !important; }
     .hero-logo { height:96px !important; }
     footer { padding-left:40px !important; padding-right:40px !important; }
@@ -48,6 +48,8 @@
     .foot { flex-direction:column !important; gap:36px !important; }
   }
   @media (max-width:600px){
+    .explogos { flex-wrap:wrap !important; gap:24px 30px !important; justify-content:center !important; }
+    .explogos > div { flex:0 0 auto !important; }
     .vgrid-4 { grid-template-columns:1fr !important; }
     .vgrid-3 { grid-template-columns:1fr !important; gap:30px !important; }
     .navlinks { display:none !important; }
@@ -60,6 +62,21 @@
     footer { padding-left:20px !important; padding-right:20px !important; }
     .cta-content { padding:44px 26px !important; }
     .cta-content h2 { font-size:32px !important; }
+    /* CTA: imagen vertical del equipo en móvil, texto arriba */
+    .cta-panel { min-height:920px !important; align-items:flex-start !important; background:#070E1C !important; }
+    .cta-img-desktop, .cta-grad-desktop { display:none !important; }
+    .cta-img-mobile { display:block !important; }
+    .cta-grad-mobile { display:block !important; }
+    /* Hero: guardia como figura contenida arriba, texto debajo sin solapar */
+    #hero-guard { height:330px !important; width:auto !important; left:50% !important; top:92px !important; bottom:auto !important; }
+    .hero-ov { background:linear-gradient(180deg, rgba(6,16,31,.35) 0%, rgba(6,16,31,.2) 30%, rgba(6,16,31,.78) 56%, rgba(6,16,31,.95) 100%) !important; }
+    .vh-h1 { font-size:38px !important; }
+    /* Cards de industria: imagen arriba + texto en panel sólido */
+    .ind-card { display:flex !important; flex-direction:column !important; justify-content:flex-start !important; min-height:0 !important; }
+    .ind-card img { position:relative !important; inset:auto !important; height:210px !important; width:100% !important; }
+    .ind-grad { display:none !important; }
+    .ind-body { position:relative !important; background:#0E1A30 !important; padding:24px 22px 28px !important; }
+    .ind-feat .ind-body h3 { font-size:24px !important; }
   }
 </style>
 </helmet>
@@ -84,9 +101,9 @@
   <div id="vnav-sentinel" style="position:absolute; top:0; left:0; width:1px; height:240px; pointer-events:none"></div>
   <img id="hero-bg" src="assets/hero-bg.png" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.08); transition:transform .2s ease-out; z-index:1; pointer-events:none">
   <img id="hero-guard" src="assets/hero-guard.png" alt="Guardia de seguridad Valgo" style="position: absolute; left: 52%; bottom: 0; transform: translateX(-50%); transition: transform .2s ease-out; z-index: 3; pointer-events: none; filter: drop-shadow(0 24px 60px rgba(0,0,0,.55)); width: 560px">
-  <div style="position:absolute; inset:0; z-index:4; pointer-events:none; opacity:.4; background:radial-gradient(60% 45% at 30% 70%, rgba(220,230,245,.28), transparent 65%), radial-gradient(55% 40% at 72% 62%, rgba(200,215,240,.22), transparent 68%); background-size:200% 200%; animation:fogDrift 24s ease-in-out infinite; mix-blend-mode:screen; filter:blur(8px)"></div>
-  <div style="position: absolute; left: -10%; right: -10%; bottom: 0; height: 55%; z-index: 4; pointer-events: none; opacity: .32; background: radial-gradient(70% 100% at 50% 100%, rgba(215,228,245,.45), transparent 70%); animation: fogDriftB 18s ease-in-out infinite; mix-blend-mode: screen; filter: blur(14px)"></div>
-  <div style="position:absolute; inset:0; background:linear-gradient(115deg, rgba(6,16,31,.92) 0%, rgba(6,16,31,.55) 42%, rgba(6,16,31,.34) 62%, rgba(6,16,31,.72) 100%); pointer-events:none; z-index:2"></div>
+  <div style="position:absolute; inset:0; z-index:4; pointer-events:none; opacity:.7; background:radial-gradient(60% 45% at 30% 70%, rgba(120,165,225,.5), transparent 68%), radial-gradient(55% 40% at 72% 62%, rgba(130,170,230,.4), transparent 68%); background-size:200% 200%; animation:fogDrift 24s ease-in-out infinite; mix-blend-mode:screen; filter:blur(8px)"></div>
+  <div style="position: absolute; left: -10%; right: -10%; bottom: 0; height: 62%; z-index: 4; pointer-events: none; opacity: .6; background: radial-gradient(70% 100% at 50% 100%, rgba(110,160,225,.75), transparent 70%); animation: fogDriftB 18s ease-in-out infinite; mix-blend-mode: screen; filter: blur(14px)"></div>
+  <div class="hero-ov" style="position:absolute; inset:0; background:linear-gradient(115deg, rgba(6,16,31,.92) 0%, rgba(6,16,31,.55) 42%, rgba(6,16,31,.34) 62%, rgba(6,16,31,.72) 100%); pointer-events:none; z-index:2"></div>
   <div style="position:absolute; inset:0; background:linear-gradient(180deg, transparent 45%, rgba(6,16,31,.85) 100%); pointer-events:none; z-index:2"></div>
   <div style="position:absolute; left:0; top:0; bottom:0; width:6px; display:flex; flex-direction:column; z-index:6; pointer-events:none"><span style="flex:1; background:#0039A6"></span><span style="flex:1; background:#fff"></span><span style="flex:1; background:#D52B1E"></span></div>
 
@@ -192,31 +209,31 @@
       <p style="font:400 17px/1.7 Inter; color:rgba(255,255,255,.6); margin:16px 0 0">Dotaciones, perfiles y protocolos adaptados al riesgo real de cada entorno.</p>
     </div>
     <div class="vgrid-ind" style="display:grid; grid-template-columns:1.5fr 1fr; grid-template-rows:auto auto; gap:24px">
-      <div class="ind-feat reveal" style="grid-row:1/3; position:relative; border-radius:28px; overflow:hidden; min-height:560px; background:#0B1E3D; display:flex; flex-direction:column; justify-content:flex-end; border:1px solid rgba(255,255,255,.14); box-shadow:0 24px 60px -30px rgba(0,0,0,.6); transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease" style-hover="transform:translateY(-6px); border-color:rgba(255,255,255,.3); box-shadow:0 40px 90px -28px rgba(0,0,0,.75)">
+      <div class="ind-card ind-feat reveal" style="grid-row:1/3; position:relative; border-radius:28px; overflow:hidden; min-height:560px; background:#0B1E3D; display:flex; flex-direction:column; justify-content:flex-end; border:1px solid rgba(255,255,255,.14); box-shadow:0 24px 60px -30px rgba(0,0,0,.6); transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease" style-hover="transform:translateY(-6px); border-color:rgba(255,255,255,.3); box-shadow:0 40px 90px -28px rgba(0,0,0,.75)">
         <img src="assets/ind-plantas.png" alt="Guardia Valgo en planta industrial" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s ease" style-hover="transform:scale(1.06)">
-        <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(6,16,31,.12) 0%, rgba(6,16,31,.45) 50%, rgba(6,16,31,.92) 100%); pointer-events:none"></div>
+        <div class="ind-grad" style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(6,16,31,.12) 0%, rgba(6,16,31,.45) 50%, rgba(6,16,31,.92) 100%); pointer-events:none"></div>
         <div style="position:absolute; top:20px; left:20px; z-index:3; background:#D99A2B; color:#0B1E3D; font:600 12px/1 Inter; letter-spacing:.01em; padding:9px 15px; border-radius:30px">Prioridad máxima · 50% inversión</div>
-        <div style="position:relative; z-index:3; padding:74px 34px 34px">
+        <div class="ind-body" style="position:relative; z-index:3; padding:74px 34px 34px">
           <h3 style="font-size:28px; line-height:1.14; font-weight:500; color:#fff; margin:0 0 12px">Plantas industriales, bodegas y logística</h3>
           <p style="font:400 15px/1.65 Inter; color:rgba(255,255,255,.82); margin:0 0 24px; max-width:460px">Ideal para operadores logísticos y plantas que requieren dotaciones grandes, contratos estables y cumplimiento normativo total. Control de acceso industrial y supervisión permanente.</p>
           <button type="button" onClick="{{ scrollToForm }}" style="background:#D99A2B; color:#0B1E3D; font:600 14px Inter; border:none; border-radius:12px; padding:13px 20px; cursor:pointer; transition:transform .2s ease, filter .2s ease" style-hover="transform:translateY(-2px); filter:brightness(1.07)">Solicitar cotización →</button>
         </div>
       </div>
-      <div class="reveal" style="position:relative; border-radius:28px; overflow:hidden; min-height:268px; background:#0B1E3D; display:flex; flex-direction:column; justify-content:flex-end; border:1px solid rgba(255,255,255,.14); box-shadow:0 24px 60px -30px rgba(0,0,0,.6); transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease" style-hover="transform:translateY(-6px); border-color:rgba(255,255,255,.3); box-shadow:0 40px 90px -28px rgba(0,0,0,.75)">
+      <div class="ind-card reveal" style="position:relative; border-radius:28px; overflow:hidden; min-height:268px; background:#0B1E3D; display:flex; flex-direction:column; justify-content:flex-end; border:1px solid rgba(255,255,255,.14); box-shadow:0 24px 60px -30px rgba(0,0,0,.6); transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease" style-hover="transform:translateY(-6px); border-color:rgba(255,255,255,.3); box-shadow:0 40px 90px -28px rgba(0,0,0,.75)">
         <img src="assets/ind-corp.png" alt="Guardia Valgo en edificio corporativo / hotel" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s ease" style-hover="transform:scale(1.06)">
-        <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(6,16,31,.1) 0%, rgba(6,16,31,.5) 55%, rgba(6,16,31,.92) 100%); pointer-events:none"></div>
+        <div class="ind-grad" style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(6,16,31,.1) 0%, rgba(6,16,31,.5) 55%, rgba(6,16,31,.92) 100%); pointer-events:none"></div>
         <div style="position:absolute; top:18px; left:18px; z-index:3; background:rgba(255,255,255,.16); backdrop-filter:blur(6px); color:#fff; font:600 11.5px/1 Inter; padding:8px 13px; border-radius:30px; border:1px solid rgba(255,255,255,.22)">25% · Baja complejidad</div>
-        <div style="position:relative; z-index:3; padding:26px">
+        <div class="ind-body" style="position:relative; z-index:3; padding:26px">
           <h3 style="font-size:21px; line-height:1.2; font-weight:500; color:#fff; margin:0 0 9px">Hoteles y edificios corporativos</h3>
           <p style="font:400 13.5px/1.6 Inter; color:rgba(255,255,255,.78); margin:0 0 16px; max-width:380px">Perfil de guardia presentable y protocolos adaptados al ambiente corporativo o turístico.</p>
           <button type="button" onClick="{{ scrollToForm }}" style="background:transparent; color:#E8B04A; font:600 13.5px Inter; border:none; padding:0; cursor:pointer; transition:opacity .2s ease, transform .2s ease" style-hover="opacity:.78; transform:translateX(3px)">Solicitar cotización →</button>
         </div>
       </div>
-      <div class="reveal" style="position:relative; border-radius:28px; overflow:hidden; min-height:268px; background:#0B1E3D; display:flex; flex-direction:column; justify-content:flex-end; border:1px solid rgba(255,255,255,.14); box-shadow:0 24px 60px -30px rgba(0,0,0,.6); transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease" style-hover="transform:translateY(-6px); border-color:rgba(255,255,255,.3); box-shadow:0 40px 90px -28px rgba(0,0,0,.75)">
+      <div class="ind-card reveal" style="position:relative; border-radius:28px; overflow:hidden; min-height:268px; background:#0B1E3D; display:flex; flex-direction:column; justify-content:flex-end; border:1px solid rgba(255,255,255,.14); box-shadow:0 24px 60px -30px rgba(0,0,0,.6); transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease" style-hover="transform:translateY(-6px); border-color:rgba(255,255,255,.3); box-shadow:0 40px 90px -28px rgba(0,0,0,.75)">
         <img src="assets/ind-colegio.png" alt="Guardia Valgo en recinto educacional" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s ease" style-hover="transform:scale(1.06)">
-        <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(6,16,31,.1) 0%, rgba(6,16,31,.5) 55%, rgba(6,16,31,.92) 100%); pointer-events:none"></div>
+        <div class="ind-grad" style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(6,16,31,.1) 0%, rgba(6,16,31,.5) 55%, rgba(6,16,31,.92) 100%); pointer-events:none"></div>
         <div style="position:absolute; top:18px; left:18px; z-index:3; background:rgba(255,255,255,.16); backdrop-filter:blur(6px); color:#fff; font:600 11.5px/1 Inter; padding:8px 13px; border-radius:30px; border:1px solid rgba(255,255,255,.22)">25% · Perfil flexible</div>
-        <div style="position:relative; z-index:3; padding:26px">
+        <div class="ind-body" style="position:relative; z-index:3; padding:26px">
           <h3 style="font-size:21px; line-height:1.2; font-weight:500; color:#fff; margin:0 0 9px">Colegios y universidades</h3>
           <p style="font:400 13.5px/1.6 Inter; color:rgba(255,255,255,.78); margin:0 0 16px; max-width:380px">Perfil de guardia versátil, control de acceso y supervisión adaptada al entorno educacional.</p>
           <button type="button" onClick="{{ scrollToForm }}" style="background:transparent; color:#E8B04A; font:600 13.5px Inter; border:none; padding:0; cursor:pointer; transition:opacity .2s ease, transform .2s ease" style-hover="opacity:.78; transform:translateX(3px)">Solicitar cotización →</button>
@@ -253,16 +270,16 @@
 
     <!-- Logos -->
     <div class="reveal" style="padding-top:46px; border-top:1px solid rgba(255,255,255,.12)">
-      <div style="font:500 12px/1 Inter; letter-spacing:.04em; text-transform:uppercase; color:rgba(255,255,255,.5); margin-bottom:20px">Experiencia del equipo directivo en operaciones como</div>
-      <div style="display:flex; flex-wrap:wrap; gap:14px; align-items:center">
-        <div style="height:54px; min-width:120px; padding:0 10px; display:flex; align-items:center; justify-content:center"><img src="assets/exp-codelco.png" alt="Codelco" style="max-height:34px; max-width:118px; width:auto; object-fit:contain; display:block; filter:brightness(0) invert(1); opacity:.62; transition:opacity .25s ease" style-hover="opacity:1"></div>
-        <div style="height:54px; min-width:120px; padding:0 10px; display:flex; align-items:center; justify-content:center"><img src="assets/exp-saam.png" alt="SAAM" style="max-height:64px; max-width:175px; width:auto; object-fit:contain; display:block; filter:brightness(0) invert(1); opacity:.62; transition:opacity .25s ease" style-hover="opacity:1"></div>
-        <div style="height:54px; min-width:120px; padding:0 10px; display:flex; align-items:center; justify-content:center"><img src="assets/exp-cruzverde.png" alt="Cruz Verde" style="max-height:46px; max-width:104px; width:auto; object-fit:contain; display:block; filter:brightness(0) invert(1); opacity:.62; transition:opacity .25s ease" style-hover="opacity:1"></div>
-        <div style="height:54px; min-width:120px; padding:0 10px; display:flex; align-items:center; justify-content:center"><img src="assets/exp-cencosud.png" alt="Cencosud" style="max-height:38px; max-width:150px; width:auto; object-fit:contain; display:block; filter:brightness(0) invert(1); opacity:.62; transition:opacity .25s ease" style-hover="opacity:1"></div>
-        <div style="height:54px; min-width:120px; padding:0 10px; display:flex; align-items:center; justify-content:center"><img src="assets/exp-iss.png" alt="ISS" style="max-height:52px; max-width:110px; width:auto; object-fit:contain; display:block; filter:brightness(0) invert(1); opacity:.62; transition:opacity .25s ease" style-hover="opacity:1"></div>
-        <div style="height:54px; min-width:120px; padding:0 10px; display:flex; align-items:center; justify-content:center"><img src="assets/exp-g4s.png" alt="G4S" style="max-height:34px; max-width:108px; width:auto; object-fit:contain; display:block; filter:brightness(0) invert(1); opacity:.62; transition:opacity .25s ease" style-hover="opacity:1"></div>
+      <div style="font:500 12px/1 Inter; letter-spacing:.04em; text-transform:uppercase; color:rgba(255,255,255,.5); margin-bottom:28px; text-align:center">Experiencia del equipo directivo en operaciones como</div>
+      <div class="explogos" style="display:flex; flex-wrap:nowrap; gap:18px; align-items:center; justify-content:space-between">
+        <div style="height:78px; flex:1 1 0; min-width:0; padding:0 4px; display:flex; align-items:center; justify-content:center"><img src="assets/exp-codelco.png" alt="Codelco" style="max-height:50px; max-width:172px; width:auto; object-fit:contain; display:block; filter:brightness(0) invert(1); opacity:.62; transition:opacity .25s ease" style-hover="opacity:1"></div>
+        <div style="height:78px; flex:1 1 0; min-width:0; padding:0 4px; display:flex; align-items:center; justify-content:center"><img src="assets/exp-saam.png" alt="SAAM" style="max-height:92px; max-width:250px; width:auto; object-fit:contain; display:block; filter:brightness(0) invert(1); opacity:.62; transition:opacity .25s ease" style-hover="opacity:1"></div>
+        <div style="height:78px; flex:1 1 0; min-width:0; padding:0 4px; display:flex; align-items:center; justify-content:center"><img src="assets/exp-cruzverde.png" alt="Cruz Verde" style="max-height:66px; max-width:150px; width:auto; object-fit:contain; display:block; filter:brightness(0) invert(1); opacity:.62; transition:opacity .25s ease" style-hover="opacity:1"></div>
+        <div style="height:78px; flex:1 1 0; min-width:0; padding:0 4px; display:flex; align-items:center; justify-content:center"><img src="assets/exp-cencosud.png" alt="Cencosud" style="max-height:54px; max-width:215px; width:auto; object-fit:contain; display:block; filter:brightness(0) invert(1); opacity:.62; transition:opacity .25s ease" style-hover="opacity:1"></div>
+        <div style="height:78px; flex:1 1 0; min-width:0; padding:0 4px; display:flex; align-items:center; justify-content:center"><img src="assets/exp-iss.png" alt="ISS" style="max-height:74px; max-width:158px; width:auto; object-fit:contain; display:block; filter:brightness(0) invert(1); opacity:.62; transition:opacity .25s ease" style-hover="opacity:1"></div>
+        <div style="height:78px; flex:1 1 0; min-width:0; padding:0 4px; display:flex; align-items:center; justify-content:center"><img src="assets/exp-g4s.png" alt="G4S" style="max-height:50px; max-width:155px; width:auto; object-fit:contain; display:block; filter:brightness(0) invert(1); opacity:.62; transition:opacity .25s ease" style-hover="opacity:1"></div>
       </div>
-      <p style="font:400 12.5px/1.55 Inter; color:rgba(255,255,255,.42); margin:22px 0 0; max-width:720px">Experiencia previa del equipo directivo en dichas operaciones. No constituye una relación comercial vigente entre estas empresas y Valgo Seguridad.</p>
+      <p style="font:400 12.5px/1.55 Inter; color:rgba(255,255,255,.42); margin:28px auto 0; max-width:720px; text-align:center">Experiencia previa del equipo directivo en dichas operaciones. No constituye una relación comercial vigente entre estas empresas y Valgo Seguridad.</p>
     </div>
   </div>
 </section>
@@ -270,8 +287,10 @@
 <!-- ===== BLOQUE 5 · CTA FINAL ===== -->
 <section class="sec" style="background:#070E1C; padding:40px 150px 110px">
   <div class="cta-panel" style="max-width:1620px; margin:0 auto; position:relative; border-radius:32px; overflow:hidden; border:1px solid rgba(255,255,255,.09); min-height:440px; display:flex; align-items:center; background:#0B1C38">
-    <img src="assets/cta-team.png" alt="Equipo de seguridad Valgo" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:right center; z-index:1">
-    <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(7,14,28,.94) 0%, rgba(7,14,28,.82) 36%, rgba(7,14,28,.35) 62%, rgba(7,14,28,.1) 100%); z-index:2; pointer-events:none"></div>
+    <img class="cta-img-desktop" src="assets/cta-team.png" alt="Equipo de seguridad Valgo" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:right center; z-index:1">
+    <img class="cta-img-mobile" src="assets/cta-mobile.png" alt="Equipo de seguridad Valgo" style="display:none; position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center bottom; z-index:1">
+    <div class="cta-grad-desktop" style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(7,14,28,.94) 0%, rgba(7,14,28,.82) 36%, rgba(7,14,28,.35) 62%, rgba(7,14,28,.1) 100%); z-index:2; pointer-events:none"></div>
+    <div class="cta-grad-mobile" style="display:none; position:absolute; inset:0; background:linear-gradient(180deg, rgba(7,14,28,.82) 0%, rgba(7,14,28,.5) 28%, rgba(7,14,28,.15) 52%, rgba(7,14,28,.05) 100%); z-index:2; pointer-events:none"></div>
     <div style="position:absolute; left:0; top:0; bottom:0; width:5px; display:flex; flex-direction:column; z-index:3"><span style="flex:1; background:#0039A6"></span><span style="flex:1; background:#fff"></span><span style="flex:1; background:#D52B1E"></span></div>
     <div class="reveal cta-content" style="position:relative; z-index:4; max-width:600px; padding:72px 56px">
       <h2 style="font-size:44px; line-height:1.1; color:#fff">¿Necesitas seguridad para tu empresa? Conversemos.</h2>
